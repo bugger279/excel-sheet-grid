@@ -12,7 +12,9 @@
     "dist": "yarn lint && yarn test && vite build",
     "lint": "yarn lint-js && yarn lint-ts",
     "lint-js": "eslint './src/**/*.{js,jsx,ts,tsx}'",
-    "lint-ts": "tsc --noemit"
+    "lint-ts": "tsc --noemit",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",

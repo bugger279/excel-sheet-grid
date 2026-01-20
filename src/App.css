@@ -1,0 +1,62 @@
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background: #f8fafc;
+}
+
+.sheet {
+  display: inline-block;
+  border: 1px solid #d0d7de;
+  background: white;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.row {
+  display: flex;
+}
+
+.header {
+  background: #f1f5f9;
+  font-weight: 600;
+}
+
+.corner {
+  width: 50px;
+}
+
+.col-header,
+.row-header {
+  width: 98px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d0d7de;
+  background: #f1f5f9;
+}
+
+.row-header {
+  width: 48px;
+}
+
+.cell {
+  width: 82px;
+  height: 36px;
+  border: 1px solid #d0d7de;
+  padding: 0 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.cell:focus {
+  border: 2px solid #2563eb;
+  z-index: 1;
+}
+
+.cell:hover {
+  background: #f8fafc;
+}
+
+.cell.derived {
+  color: #0f766e;
+  font-weight: 500;
+}

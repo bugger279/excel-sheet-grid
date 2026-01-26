@@ -135,25 +135,25 @@ export const sheetSlice = createSlice({
   name: "sheet",
   initialState,
   reducers: {
-    updateCell: (state, action: PayloadAction<{ id: string; raw: string }>) => {
+    updateCell: (state, action: PayloadAction<{ id: string; raw: string }>) => { // payload contains cell id and new raw value
       const { id, raw } = action.payload;
       const cell = state.cells[id];
 
       if (!cell) return;
 
-      if (!isFormula(raw)) {
+      if (!isFormula(raw)) { // If it's not a formula, just update the raw value and clear formula/deps
         cell.raw = raw;
         cell.value = raw;
         cell.formula = undefined;
         cell.deps = [];
-        recomputeCell(id, state.cells);
+        recomputeCell(id, state.cells); // Recompute dependent cells
         return;
       }
 
-      cell.formula = raw;
-      cell.deps = extractDependencies(raw);
-      cell.value = evaluateFormula(raw, state.cells);
-      recomputeCell(id, state.cells);
+      cell.formula = raw; // If it's a formula, update formula and dependencies
+      cell.deps = extractDependencies(raw); // Extract dependencies from the formula
+      cell.value = evaluateFormula(raw, state.cells); // Evaluate the formula to get the value
+      recomputeCell(id, state.cells); // Recompute dependent cells
     },
   },
 });

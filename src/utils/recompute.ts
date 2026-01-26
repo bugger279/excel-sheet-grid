@@ -1,5 +1,4 @@
 import { evaluateFormula } from "./formula";
-import { findDependents } from "./dependency";
 import { GridValues } from "@/types";
 
 export const recomputeCell = (
@@ -15,6 +14,9 @@ export const recomputeCell = (
     cell.value = evaluateFormula(cell.formula, cells);
   }
 
-  const dependents = findDependents(id, cells);
-  dependents.forEach((depId) => recomputeCell(depId, cells, visited));
+  for (const dependentId in cells) {
+    if (cells[dependentId].deps.includes(id)) {
+      recomputeCell(dependentId, cells, visited);
+    }
+  }
 };
